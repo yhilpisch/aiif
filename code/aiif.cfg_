@@ -1,0 +1,13 @@
+[eikon]
+app_key = 0343b9-YOUR-KEY-8ead067c5dc
+
+[oanda]
+access_token = 365f5e9232b-YOUR-TOKEN-06f5e6e0ac2277ad96c6
+account_id = 101-004-YOURNUMBER-001
+account_type = practice
+
+[twitter]
+access_token = 11790752-YOUR-TOKEN-JFwqath4NiYGHM2IpN7
+access_secret_token = P98ugJM-YOUR-SECRET-TOKEN-fakJ8Xz
+api_key = 7fj-YOUR-API-KEY-02KdiLw
+api_secret_key = taIKqHNAf-YOUR-SECRET-KEY-wciNnX9HE
