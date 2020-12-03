@@ -6,10 +6,16 @@
 #
 import os
 import random
+import logging
 import numpy as np
 from pylab import plt, mpl
 from collections import deque
 import tensorflow as tf
+
+tf.get_logger().setLevel(logging.ERROR)
+from tensorflow.python.framework.ops import disable_eager_execution
+disable_eager_execution()
+
 from keras.layers import Dense, Dropout
 from keras.models import Sequential
 from keras.optimizers import Adam, RMSprop

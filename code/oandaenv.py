@@ -52,19 +52,19 @@ class OandaEnv:
     def _get_data(self):
         ''' Method to retrieve data from Oanda.
         '''
-        self.fn = f'../../source/oanda/'  # <1>
-        self.fn += f'oanda_{self.symbol}_{self.start}_{self.end}_'  # <2>
-        self.fn += f'{self.granularity}_{self.price}.csv'  # <2>
+        self.fn = f'oanda/'
+        self.fn += f'oanda_{self.symbol}_{self.start}_{self.end}_'  
+        self.fn += f'{self.granularity}_{self.price}.csv' 
         self.fn = self.fn.replace(' ', '_').replace('-', '_').replace(':', '_')
         try:
-            self.raw = pd.read_csv(self.fn, index_col=0, parse_dates=True)  # <3>
+            self.raw = pd.read_csv(self.fn, index_col=0, parse_dates=True)
         except:
             self.raw = self.api.get_history(self.symbol, self.start,
                                        self.end, self.granularity,
-                                       self.price)  # <4>
-            self.raw.to_csv(self.fn)  # <5>
-        self.data = pd.DataFrame(self.raw['c'])  # <6>
-        self.data.columns = [self.symbol]  # <7>
+                                       self.price)
+            self.raw.to_csv(self.fn)
+        self.data = pd.DataFrame(self.raw['c'])
+        self.data.columns = [self.symbol]
 
     def _prepare_data(self):
         ''' Method to prepare additional time series data
@@ -109,9 +109,9 @@ class OandaEnv:
         '''
         correct = action == self.data['d'].iloc[self.bar]
         ret = self.data['r'].iloc[self.bar] * self.leverage
-        reward_1 = 1 if correct else 0  # <8>
-        reward_2 = abs(ret) if correct else -abs(ret)  # <9>
-        reward = reward_1 + reward_2 * self.leverage  # <10>
+        reward_1 = 1 if correct else 0 
+        reward_2 = abs(ret) if correct else -abs(ret)
+        reward = reward_1 + reward_2 * self.leverage
         self.treward += reward_1
         self.bar += 1
         self.accuracy = self.treward / (self.bar - self.lags)
