@@ -5,10 +5,13 @@ _build/
 *.cfg
 .DS_Store
 source/
+trading*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+
 
 # C extensions
 *.so
