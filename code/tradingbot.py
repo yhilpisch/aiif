@@ -11,16 +11,16 @@ import numpy as np
 from pylab import plt, mpl
 from collections import deque
 import tensorflow as tf
+from tensorflow import keras
 
-tf.get_logger().setLevel(logging.ERROR)
 from tensorflow.python.framework.ops import disable_eager_execution
 disable_eager_execution()
 
 from keras.layers import Dense, Dropout
 from keras.models import Sequential
-from keras.optimizers import Adam, RMSprop
 
 os.environ['PYTHONHASHSEED'] = '0'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '5'
 plt.style.use('seaborn')
 mpl.rcParams['savefig.dpi'] = 300
 mpl.rcParams['font.family'] = 'serif'
@@ -72,7 +72,7 @@ class TradingBot:
         model.add(Dense(2, activation='linear'))
         model.compile(
             loss='mse',
-            optimizer=RMSprop(lr=lr)
+            optimizer=keras.optimizers.RMSprop(learning_rate=lr)
         )
         return model
 

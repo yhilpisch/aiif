@@ -7,7 +7,6 @@
 #
 import sys
 import tpqoa
-import keras
 import pickle
 import numpy as np
 import pandas as pd
@@ -110,10 +109,8 @@ class OandaTradingBot(tpqoa.tpqoa):
                 
                 
 if __name__ == '__main__':
-    model = keras.models.load_model('tradingbot')
     agent = pickle.load(open('trading.bot', 'rb'))
-    agent.model = model
-    otb = OandaTradingBot('../aiif.cfg', agent, '5s',
+    otb = OandaTradingBot('../../../data/aiif.cfg', agent, '5s',
                           25000, verbose=False)
     otb.stream_data(agent.learn_env.symbol, stop=1000)
     print('\n' + 71 * '=')

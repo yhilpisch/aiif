@@ -34,7 +34,7 @@ class OandaEnv:
         self.end = end
         self.granularity = granularity
         self.price = price
-        self.api = tpqoa.tpqoa('../aiif.cfg')
+        self.api = tpqoa.tpqoa('../../../data/aiif.cfg')
         self.features = features
         self.n_features = len(features)
         self.window = window
@@ -52,7 +52,7 @@ class OandaEnv:
     def _get_data(self):
         ''' Method to retrieve data from Oanda.
         '''
-        self.fn = f'oanda/'
+        self.fn = f'../../../data/'
         self.fn += f'oanda_{self.symbol}_{self.start}_{self.end}_'  
         self.fn += f'{self.granularity}_{self.price}.csv' 
         self.fn = self.fn.replace(' ', '_').replace('-', '_').replace(':', '_')
