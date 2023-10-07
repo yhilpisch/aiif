@@ -15,7 +15,7 @@ from nltk.corpus import stopwords
 from nltk.corpus import wordnet as wn
 from lxml.html.clean import Cleaner
 from sklearn.feature_extraction.text import TfidfVectorizer
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8')
 
 cleaner = Cleaner(style=True, links=True, allow_tags=[''],
                   remove_unknown_tags=False)

@@ -21,7 +21,7 @@ from keras.models import Sequential
 
 os.environ['PYTHONHASHSEED'] = '0'
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '5'
-plt.style.use('seaborn')
+plt.style.use('seaborn-v0_8')
 mpl.rcParams['savefig.dpi'] = 300
 mpl.rcParams['font.family'] = 'serif'
 
@@ -72,7 +72,7 @@ class TradingBot:
         model.add(Dense(2, activation='linear'))
         model.compile(
             loss='mse',
-            optimizer=keras.optimizers.RMSprop(learning_rate=lr)
+            optimizer=keras.optimizers.legacy.RMSprop(learning_rate=lr)
         )
         return model
 
