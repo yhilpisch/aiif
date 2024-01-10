@@ -155,7 +155,7 @@ class TradingBot:
                 treward = _ + 1
                 perf = self.valid_env.performance
                 self.vperformances.append(perf)
-                if e % int(episodes / 6) == 0:
+                if e % (int(episodes / 6) + 1) == 0:
                     templ = 71 * '='
                     templ += '\nepisode: {:2d}/{} | VALIDATION | '
                     templ += 'treward: {:4d} | perf: {:5.3f} | eps: {:.2f}\n'
