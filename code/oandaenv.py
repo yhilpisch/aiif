@@ -9,7 +9,7 @@ import tpqoa
 import random
 import numpy as np
 import pandas as pd
-
+import os
 
 class observation_space:
     def __init__(self, n):
@@ -63,6 +63,8 @@ class OandaEnv:
             self.raw = self.api.get_history(self.symbol, self.start,
                                        self.end, self.granularity,
                                        self.price)
+            if not os.path.isdir('../data'):
+                os.mkdir('../data')
             self.raw.to_csv(self.fn)
         self.data = pd.DataFrame(self.raw['c'])
         self.data.columns = [self.symbol]
